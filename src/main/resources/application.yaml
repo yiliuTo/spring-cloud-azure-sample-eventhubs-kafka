@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: yiehtest.servicebus.windows.net:9093
+      bindings:
+        consume-in-0:
+          destination: yieh
+          group: $Default
+        supply-out-0:
+          destination: yieh
+      binders:
+        kafka:  # default value is kafka
+          environment:
+            spring:
+              main:
+                sources: com.azure.spring.cloud.autoconfigure.kafka.AzureKafkaSpringCloudStreamConfiguration
+    function:
+      definition: consume;supply
+
